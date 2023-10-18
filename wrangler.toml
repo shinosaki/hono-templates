@@ -1,0 +1,40 @@
+name = "myapp"
+main = "src/worker.ts"
+compatibility_date = "2023-10-01"
+# node_compat = true
+
+# workers_dev = false
+
+# [[routes]]
+# pattern = "app.example.com"
+# custom_domain = true
+
+[vars]
+APP_NAME = "My APP"
+APP_VERSION = "0.1.0"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "_"
+preview_id = "local"
+
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "_"
+preview_bucket_name = "local"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "myapp-db"
+database_id = "_"
+preview_database_id = "local"
+migrations_dir = "./drizzle"
+
+[site]
+bucket = "./assets"
+
+# [dev]
+# ip = "localhost"
+# port = 8787
+# local_protocol = "http"
+# host = "localhost:8787"

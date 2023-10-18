@@ -1,0 +1,29 @@
+{
+  "name": "myapp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "css": "tailwindcss -i src/style.css -o assets/static/style.css --watch",
+    "build:css": "tailwindcss -i src/style.css -o assets/static/style.css --minify",
+    "init:node": "npm i && npm i @hono/node-server",
+    "init:worker": "npm i && npm i -D wrangler @cloudflare/workers-types",
+    "dev:bun": "bun run --hot src/bun.ts",
+    "dev:deno": "deno run --allow-net --allow-read --unstable --watch src/deno.tsx",
+    "dev:node": "tsx src/node.ts",
+    "dev:worker": "wrangler dev --live-reload src/worker.ts",
+    "database": "drizzle-kit generate:sqlite --schema=db/schema.ts",
+    "d1:init": "wrangler d1 create",
+    "d1": "wrangler d1 migrations apply --local",
+    "deploy": "wrangler deploy --minify src/worker.ts",
+    "deploy:d1": "wrangler d1 migrations apply"
+  },
+  "dependencies": {
+    "hono": "^3.8.1",
+    "drizzle-orm": "^0.28.6"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.3",
+    "drizzle-kit": "^0.19.13"
+  }
+}
